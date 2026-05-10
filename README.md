@@ -1,8 +1,8 @@
 # AstraX Browser
 
-AstraX is a portfolio-grade desktop web browser written in modern C++ with Qt 6 and Qt WebEngine. It uses Chromium through Qt WebEngine for standards-compliant rendering, then focuses the C++ work on application architecture: tabs, persistent data, downloads, keyboard-driven navigation, private mode, and clean separation between UI, URL handling, and storage.
+AstraX is a desktop web browser written in modern C++ with Qt 6 and Qt WebEngine. It uses Chromium through Qt WebEngine for standards-compliant rendering, then focuses the application code on browser workflows: tabs, persistent data, downloads, keyboard-driven navigation, private mode, and clean separation between UI, URL handling, storage, and engine-lab experiments.
 
-This is the kind of project you can show in interviews because it demonstrates pragmatic engineering judgment: do not hand-roll a browser engine, but do build a capable product around a real engine.
+AstraX also includes Engine Lab, a small educational browser-internals module for experimenting with HTML parsing, CSS matching, and block layout without replacing Qt WebEngine for real-world browsing.
 
 ## Features
 
@@ -95,29 +95,29 @@ ctest --test-dir build/debug --output-on-failure
 - `Alt+Left` / `Alt+Right`: back and forward
 - `F12`: open Developer Tools
 
-## Why This Project Works For A Job Portfolio
+## Project Structure
 
-AstraX shows that you can work with a large third-party framework, design a maintainable desktop app, persist user state safely, and build real user workflows. The code is intentionally split into focused modules so an interviewer can review how you think:
+AstraX is split into focused modules:
 
 - `src/core`: input parsing and URL/search resolution.
+- `src/engine`: HTML parsing, CSS parsing, selector matching, and block layout experiments.
 - `src/storage`: JSON-backed persistence for bookmarks, history, settings, and sessions.
-- `src/ui`: Qt widgets, browser windows, tabs, downloads, and shortcuts.
+- `src/ui`: Qt widgets, browser windows, tabs, downloads, search UI, and Engine Lab UI.
 - `tests`: Qt Test coverage for URL resolution and persistence behavior.
 
-Good interview talking points:
+## Implementation Notes
 
-- Why Qt WebEngine is the right abstraction instead of building a rendering engine.
-- How private mode changes profile/cache/history behavior.
-- How data is persisted atomically.
-- How tab creation works for links that request a new window.
-- How the Library sidebar keeps bookmarks, history, and downloads discoverable without separate windows.
-- How the page information dialog reflects profile/security state.
-- How `QWebEngineUrlRequestInterceptor` blocks known tracker requests before Chromium loads them.
-- How session restore reconstructs tabs from a sanitized JSON session file.
-- What you would add next: filter-list imports, certificate details, bookmark management, and packaged installers.
+- Real website rendering is handled by Qt WebEngine/Chromium.
+- Private mode uses an in-memory `QWebEngineProfile` and pauses history writes.
+- Bookmarks, history, settings, and sessions are stored as JSON.
+- Storage writes use `QSaveFile` where appropriate for safer updates.
+- Tabs are created through a custom `BrowserView` factory when web content requests a new window.
+- `QWebEngineUrlRequestInterceptor` blocks common tracker requests before the page loads them.
+- AstraX Search ranks local bookmarks/history first, then provides a configurable web fallback.
+- Engine Lab parses HTML/CSS and calculates simple layout boxes for learning and debugging browser internals.
 
 ## Next Milestones
 
-See [docs/ROADMAP.md](docs/ROADMAP.md) for feature ideas that would make this even stronger as a job-facing project.
+See [docs/ROADMAP.md](docs/ROADMAP.md) for feature ideas.
 
 For presenting the project, see [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).

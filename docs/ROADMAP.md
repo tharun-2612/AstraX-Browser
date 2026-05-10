@@ -1,6 +1,6 @@
 # Roadmap
 
-These milestones are ordered to make the project increasingly attractive in interviews.
+These milestones are ordered from focused product polish to larger browser features.
 
 ## Near Term
 
@@ -9,7 +9,7 @@ These milestones are ordered to make the project increasingly attractive in inte
 - Expand the page information dialog with certificate and permission details.
 - Extend settings for download directory, JavaScript preferences, and cache controls.
 
-## Portfolio Polish
+## Release Polish
 
 - Add a screenshot gallery to the README after building locally.
 - Package Windows builds with CPack or the Qt Installer Framework.

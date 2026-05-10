@@ -55,4 +55,4 @@ The UI layer translates browser actions into Qt WebEngine operations:
 
 The main AstraX browser intentionally does not replace Chromium's HTML parsing, layout, JavaScript, or TLS for real-world browsing. Those are multi-year browser-engine problems. The product demonstrates production-minded C++ application development around a trusted engine.
 
-The Engine Lab is intentionally scoped differently: it is a learning and interview surface for browser internals. It now covers HTML parsing, DOM viewing, CSS parsing, selector matching, and basic block layout, then can grow into rendering and JavaScript experiments.
+The Engine Lab is intentionally scoped differently: it is a learning and debugging surface for browser internals. It now covers HTML parsing, DOM viewing, CSS parsing, selector matching, and basic block layout, then can grow into rendering and JavaScript experiments.

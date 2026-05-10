@@ -1,6 +1,6 @@
-# Demo Script
+# Demo Guide
 
-Use this flow when showing AstraX to an interviewer or recording a short portfolio video.
+Use this flow when recording a short product demo or checking the main user workflows.
 
 ## Two-Minute Walkthrough
 
@@ -18,7 +18,7 @@ Use this flow when showing AstraX to an interviewer or recording a short portfol
 12. Press `F12` to open Developer Tools.
 13. Open a private window with `Ctrl+Shift+N` and explain the separate in-memory profile.
 
-## Resume Bullets
+## Implementation Highlights
 
 - Built a C++20 desktop browser using Qt 6 WebEngine with tabbed browsing, smart URL/search handling, persistent bookmarks, browsing history, session restore, downloads, private mode, and Developer Tools.
 - Designed a modern Qt Widgets browser shell with styled tabs, a page information chip, and a Library sidebar for bookmarks, history, and downloads.
@@ -26,9 +26,9 @@ Use this flow when showing AstraX to an interviewer or recording a short portfol
 - Added a profile-level request interceptor to block common tracker/ad requests before network loading.
 - Structured the application into focused UI, storage, and URL-resolution modules with CMake build presets and Linux CI.
 
-## Interview Talking Points
+## Technical Notes
 
-- I used Qt WebEngine because browser rendering is a deep systems problem; the engineering value here is product architecture around a real engine.
+- Qt WebEngine handles standards-compliant page rendering while AstraX owns the browser shell, persistence, search UI, and Engine Lab.
 - Private mode uses a separate off-the-record `QWebEngineProfile`, disables persistent cookies, uses memory cache, and pauses history writes.
 - Bookmarks and history are saved as structured JSON and written atomically to avoid corrupting user data.
 - New-window requests from web pages are routed into new browser tabs through a small `BrowserView` extension.

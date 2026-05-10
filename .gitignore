@@ -1,0 +1,29 @@
+build/
+out/
+.cache/
+.vscode/
+.idea/
+CMakeUserPresets.json
+*.user
+*.swp
+*.tmp
+*.log
+*.obj
+*.exe
+/cmake
+
+# Private/local workspace files
+.openclaw/
+.codex/
+.env
+.env.*
+AGENTS.md
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+
+# Local deployment archives
+*.zip
+*.7z

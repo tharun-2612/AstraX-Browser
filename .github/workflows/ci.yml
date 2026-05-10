@@ -14,10 +14,20 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build g++ qt6-base-dev qt6-webengine-dev
+          sudo apt-get install -y cmake ninja-build g++ libgl1-mesa-dev
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.8.3'
+          host: linux
+          target: desktop
+          arch: linux_gcc_64
+          modules: qtwebengine
+          cache: true
 
       - name: Configure
-        run: cmake --preset release
+        run: cmake --preset release -DCMAKE_PREFIX_PATH="$Qt6_DIR"
 
       - name: Build
         run: cmake --build --preset release

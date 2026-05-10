@@ -1,0 +1,25 @@
+* text=auto
+
+# Keep source/config/docs stable across Windows and Linux.
+*.cpp text eol=lf
+*.h text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.qrc text eol=lf
+*.rc text eol=lf
+
+# Windows command scripts should keep CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary assets.
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.zip binary
+*.7z binary
